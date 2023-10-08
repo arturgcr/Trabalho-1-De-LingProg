@@ -12,4 +12,7 @@ class Usuario:
     def cadastrarNoSistema():
         pass
 
+    def getTagDeFiltro(self):
+        return [self.cargo, self.projeto, self.area]
+
     

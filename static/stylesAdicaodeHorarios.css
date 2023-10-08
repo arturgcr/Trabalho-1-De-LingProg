@@ -1,0 +1,58 @@
+/* stylesAdicaodeHorarios.css */
+
+/* Estilo para a tabela */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Estilo para os checkboxes */
+input[type="checkbox"] {
+    transform: scale(1.5); /* Tamanho maior para os checkboxes */
+}
+
+/* Estilo para os botões */
+input[type="submit"], button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button {
+    background-color: #f44336;
+}
+
+/* Estilo para o container principal */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+/* Estilo para os cabeçalhos */
+h1 {
+    color: #007BFF;
+}
+
+h2 {
+    color: #f44336;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edite sua TAG</title>
+    <link rel="stylesheet" href="/static/stylesDoCriarReuniao.css">
+</head>
+<body>
+    <div class="options-container">
+        <h1>Editar TAG:</h1>
+        <label for="cargos">Cargos:</label>
+        <select id="cargos" name="cargos">
+            <option value="Opção1">Trainne</option>
+            <option value="Opção2">Membro</option>
+            <option value="Opção3">Liderança</option>
+            <option value="Opção4">Gestão</option>
+            <option value="Opção5">Indiferente</option>
+        </select>
+
+        <label for="areas">Áreas:</label>
+        <select id="areas" name="areas">
+            <option value="Área1">Eletroprog</option>
+            <option value="Área2">Mecânico</option>
+            <option value="Área3">Administração</option>
+            <option value="Área4">Marketing</option>
+            <option value="Área5">Gestão</option>
+            <option value="Área6">Indiferente</option>
+        </select>
+
+        <label for="projetos">Projetos:</label>
+        <select id="projetos" name="projetos">
+            <option value="Projeto1">Combate Grande</option>
+            <option value="Projeto2">Combate Pequeno</option>
+            <option value="Projeto3">Seguidor de Linha</option>
+            <option value="Projeto4">Trekking</option>
+            <option value="Projeto5">Sumô Mini</option>
+            <option value="Projeto6">Sumô 3KG</option>
+            <option value="Projeto7">Sumô Lego</option>
+            <option value="Projeto8">Indiferente</option>
+        </select>
+        
+        <button class="options-button" onclick="obterOpcoes()">Confirmar</button>
+    </div>
+    <button type="button" onclick="voltar()">Voltar</button>
+
+    <script>
+        function voltar() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
