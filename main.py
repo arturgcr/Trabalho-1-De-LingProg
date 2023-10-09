@@ -2,14 +2,13 @@ from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient
 import webbrowser
 import threading
+from tratamentoDeErro import *
+from bancoDeDados import *
+
+erro = ""
 
 app = Flask(__name__)
-
-# Cria um novo cliente e o conecta ao servidor
-client = MongoClient('localhost', 27017, username="eduguiima", password='JkpNudzHYW1ddxGh')
-
-db = client.flask_db
-todos = db.todos
+bdUsuarios = BancoDeDados("localhost", "root", "senha", "Usuarios")
 
 # TO DO: REVISAR IMPLEMENTAÇÃO DA PAGINAÇÃO DIVIDIDA OU INSERIR TODAS EM UM LUGAR SÓ.
 
@@ -22,6 +21,7 @@ def index():
 # Rota de Login
 @app.route("/Login", methods=["POST", "GET"])
 def tela_de_login():
+    # No if abaixo devemos inserir a comparação com o banco de dados, levando usuario e senha em consideração
     if request.method == 'POST':
         # Redireciona para a tela de menu de opções se o login for bem-sucedido
         return redirect('/Opcoes')
@@ -32,8 +32,20 @@ def tela_de_login():
 # Rota da tela de cadastro
 @app.route('/Cadastro', methods=['POST', 'GET'])
 def telaDeCadastro():
+    
+    # Obtém os dados dos campos de texto da tela de cadastro
+    nome = request.form.get("nome")
+    email = request.form.get("email")
+    senha = request.form.get("senha")
+    confirmarSenha = request.form.get("confirmar_senha")
+
     if request.method == 'POST':
-        return redirect('/editarHorariosOnline')
+        try:
+            verificar_senha(senha, confirmarSenha)
+        except SenhaInvalidaErro as erro:
+            return render_template('telaDeCadastro.html', erro=erro)
+
+        return redirect('/Opcoes')
     # Lógica da tela de cadastro
     return render_template('telaDeCadastro.html')
 
@@ -88,10 +100,6 @@ if __name__ == '__main__':
     threading.Thread(target=inicia_site).start()
     
     try:
-        # client.admin.command('ping')
-        
-        # # Envia um ping para confirmar que a conexão foi bem sucedida
-        # print("Pinged your deployment. You successfully connected to MongoDB!")
         # Abre o navegador automaticamente na página local
         webbrowser.open("http://localhost:5000/")
         

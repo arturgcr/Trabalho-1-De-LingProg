@@ -3,62 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/stylesDoCadastro.css">
-    <title>Cadastro - Google Agenda</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="signup-container">
-        <div class="signup-box">
-            <h1>Cadastro</h1>
-            <form action="#" method="POST">
-                <div class="input-group">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Senha:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div>
-                <label for="cargos">Cargos:</label>
-                <select id="cargos" name="cargos" required>
-                <option value="Opção1">Trainne</option>
-                <option value="Opção2">Membro</option>
-                <option value="Opção3">Liderança</option>
-                <option value="Opção4">Gestão</option>
-                <option value="Opção5">Indiferente</option>
-                </select>
-                </div>
-                <div><label for="projetos">Projetos:</label>
-                    <select id="projetos" name="projetos" required>
-                        <option value="Projeto1">Combate Grande</option>
-                        <option value="Projeto2">Combate Pequeno</option>
-                        <option value="Projeto3">Seguidor de Linha</option>
-                        <option value="Projeto4">Trekking</option>
-                        <option value="Projeto5">Sumô Mini</option>
-                        <option value="Projeto6">Sumô 3KG</option>
-                        <option value="Projeto7">Sumô Lego</option>
-                        <option value="Projeto8">Indiferente</option>
-                    </select></div>
-                <div>
-                    <label for="areas">Áreas:</label>
-                <select id="areas" name="areas" required>
-                <option value="Área1">Eletroprog</option>
-                <option value="Área2">Mecânico</option>
-                <option value="Área3">Administração</option>
-                <option value="Área4">Marketing</option>
-                <option value="Área5">Gestão</option>
-                <option value="Área6">Indiferente</option>
-                </select>
-                </div>
-
-                <button type="submit">Cadastrar</button>
-            </form>
-            <p class="login-link">Já tem uma conta? <a href="/Login">Faça o login</a></p>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h1 class="text-center">Cadastro</h1>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" class="form-control" required>
+                        {% if request.method == 'POST' and erro %}
+                        <ul>
+                            {% for mensagem in erro.mensagens %}
+                            <li style="color: red;">{{ mensagem }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}                     
+                        <div id="senha-erro" class="text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmar_senha">Confirmar Senha:</label>
+                        <input type="password" id="confirmar_senha" name="confirmar_senha" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cargos">Cargos:</label>
+                        <select id="cargos" name="cargos" class="form-control" required>
+                            <option value="Opção1">Trainne</option>
+                            <option value="Opção2">Membro</option>
+                            <option value="Opção3">Liderança</option>
+                            <option value="Opção4">Gestão</option>
+                            <option value="Opção5">Indiferente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projetos">Projetos:</label>
+                        <select id="projetos" name="projetos" class="form-control" required>
+                            <option value="Projeto1">Combate Grande</option>
+                            <option value="Projeto2">Combate Pequeno</option>
+                            <option value="Projeto3">Seguidor de Linha</option>
+                            <option value="Projeto4">Trekking</option>
+                            <option value="Projeto5">Sumô Mini</option>
+                            <option value="Projeto6">Sumô 3KG</option>
+                            <option value="Projeto7">Sumô Lego</option>
+                            <option value="Projeto8">Indiferente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="areas">Áreas:</label>
+                        <select id="areas" name="areas" class="form-control" required>
+                            <option value="Área1">Eletroprog</option>
+                            <option value="Área2">Mecânico</option>
+                            <option value="Área3">Administração</option>
+                            <option value="Área4">Marketing</option>
+                            <option value="Área5">Gestão</option>
+                            <option value="Área6">Indiferente</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                </form>
+                <p class="mt-3 text-center">Já tem uma conta? <a href="/Login">Faça o login</a></p>
+            </div>
         </div>
     </div>
 </body>
