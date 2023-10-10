@@ -3,7 +3,7 @@ from mysql.connector import Error
 import pandas as pd
 
 class BancoDeDados:
-    def __init__(self, host, usuario, senha, banco_de_dados):
+    def __init__(self, host="localhost", usuario="usuario", senha="senha", banco_de_dados="usuarios"):
         """
         Inicializa a classe BancoDeDados com as informações de conexão.
         
@@ -19,16 +19,15 @@ class BancoDeDados:
         self.banco_de_dados = banco_de_dados
         self.conexao = None
 
-        try:
-            self.conexao = mysql.connector.connect(
-                host=self.host,
-                user=self.usuario,
-                password=self.senha,
-                database=self.banco_de_dados
-            )
-            print("Conexão ao banco de dados estabelecida.")
-        except mysql.connector.Error as err:
-            print(f"Erro ao conectar ao banco de dados: {err}")
+        
+        self.conexao = mysql.connector.connect(
+            host=self.host,
+            user=self.usuario,
+            password=self.senha,
+            database=self.banco_de_dados
+        )
+        print("Conexão ao banco de dados estabelecida.")
+
 
     def desconectar(self):
         """
@@ -110,5 +109,50 @@ class BancoDeDados:
         except mysql.connector.Error as err:
             print(f"Erro ao atualizar dados: {err}")
 
+    def criar_colunas_tabela(self, tabela, colunas):
+        """
+        Cria colunas em uma tabela no banco de dados.
+
+        Parametros:
+            tabela (str): Nome da tabela onde as colunas serão criadas.
+            colunas (dict): Um dicionário que mapeia o nome da coluna para o tipo de dados.
+
+        Onde usamos:
+            colunas = {
+                'nome': 'VARCHAR(255)',
+                'email': 'VARCHAR(255)',
+                'senha': 'VARCHAR(255)',
+                'cargo': 'VARCHAR(255)',
+                'projeto': 'VARCHAR(255)',
+                'area': 'VARCHAR(255)'
+            }
+            banco_de_dados.criar_colunas_tabela('banco_de_usuarios', colunas)
+        """
+        try:
+            cursor = self.conexao.cursor()
+            for coluna, tipo in colunas.items():
+                consulta = f"ALTER TABLE {tabela} ADD COLUMN {coluna} {tipo}"
+                cursor.execute(consulta)
+            self.conexao.commit()
+            print("Colunas criadas com sucesso.")
+        except mysql.connector.Error as err:
+            print(f"Erro ao criar colunas: {err}")
 
 
+
+    def excluir_usuario(self, tabela, identificador, selecionado):
+        """
+        Exclui um usuário por completo do banco de dados.
+
+        Parametros:
+            tabela (str): Nome da tabela onde o usuário será excluído.
+            id_usuario (int): O ID (ou outra identificação única) do usuário a ser excluído.
+        """
+        try:
+            cursor = self.conexao.cursor()
+            consulta = f"DELETE FROM {tabela} WHERE {identificador} = %s" 
+            cursor.execute(consulta, (selecionado,))
+            self.conexao.commit()
+            print("Usuário excluído com sucesso.")
+        except mysql.connector.Error as err:
+            print(f"Erro ao excluir usuário: {err}")

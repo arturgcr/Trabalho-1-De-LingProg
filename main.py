@@ -8,8 +8,8 @@ from bancoDeDados import *
 erro = ""
 
 app = Flask(__name__)
-bdUsuarios = BancoDeDados("localhost", "root", "senha", "Usuarios")
-
+bd = BancoDeDados()
+bd.excluir_usuario("usuarios", "cargo", "Opção2")
 # TO DO: REVISAR IMPLEMENTAÇÃO DA PAGINAÇÃO DIVIDIDA OU INSERIR TODAS EM UM LUGAR SÓ.
 
 # Rota Inicial
@@ -38,6 +38,9 @@ def telaDeCadastro():
     email = request.form.get("email")
     senha = request.form.get("senha")
     confirmarSenha = request.form.get("confirmar_senha")
+    cargo = request.form.get("cargos")
+    projeto = request.form.get("projetos")
+    area = request.form.get("areas")
 
     if request.method == 'POST':
         try:
@@ -45,6 +48,7 @@ def telaDeCadastro():
         except SenhaInvalidaErro as erro:
             return render_template('telaDeCadastro.html', erro=erro)
 
+        bd.inserir_usuario("usuarios", str(nome), str(email), str(senha), str(cargo), str(projeto), str(area))
         return redirect('/Opcoes')
     # Lógica da tela de cadastro
     return render_template('telaDeCadastro.html')
