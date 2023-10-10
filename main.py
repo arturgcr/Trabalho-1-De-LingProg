@@ -9,7 +9,6 @@ erro = ""
 
 app = Flask(__name__)
 bd = BancoDeDados()
-bd.excluir_usuario("usuarios", "cargo", "Opção2")
 # TO DO: REVISAR IMPLEMENTAÇÃO DA PAGINAÇÃO DIVIDIDA OU INSERIR TODAS EM UM LUGAR SÓ.
 
 # Rota Inicial
@@ -23,8 +22,13 @@ def index():
 def tela_de_login():
     # No if abaixo devemos inserir a comparação com o banco de dados, levando usuario e senha em consideração
     if request.method == 'POST':
-        # Redireciona para a tela de menu de opções se o login for bem-sucedido
-        return redirect('/Opcoes')
+        listaDeUsuarios = bd.ler_dados()
+        email = request.form.get("email")
+        senha = request.form.get("senha")
+        for usuario in listaDeUsuarios:
+            if email ==  usuario[1] and senha == usuario[2]:
+                # Redireciona para a tela de menu de opções se o login for bem-sucedido
+                return redirect('/Opcoes')
     
     # Renderiza a tela de login por padrão ou em caso de falha no login
     return render_template("telaDeLogin.html")
@@ -45,8 +49,13 @@ def telaDeCadastro():
     if request.method == 'POST':
         try:
             verificar_senha(senha, confirmarSenha)
-        except SenhaInvalidaErro as erro:
-            return render_template('telaDeCadastro.html', erro=erro)
+        except VerificaErro as erroSenha:
+            return render_template('telaDeCadastro.html', erroSenha=erroSenha)
+        
+        try:
+            verificar_cadastro_usuario(nome, email)
+        except VerificaErro as erroEmail:
+            return render_template('telaDeCadastro.html', erroEmail=erroEmail)
 
         bd.inserir_usuario("usuarios", str(nome), str(email), str(senha), str(cargo), str(projeto), str(area))
         return redirect('/Opcoes')

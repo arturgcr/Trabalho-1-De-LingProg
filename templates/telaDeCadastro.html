@@ -19,12 +19,19 @@
                         <label for="email">E-mail:</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                     </div>
+                    {% if request.method == 'POST' and erroEmail %}
+                    <ul>
+                        {% for mensagem in erroEmail.mensagens %}
+                        <li style="color: red;">{{ mensagem }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}   
                     <div class="form-group">
                         <label for="senha">Senha:</label>
                         <input type="password" id="senha" name="senha" class="form-control" required>
-                        {% if request.method == 'POST' and erro %}
+                        {% if request.method == 'POST' and erroSenha %}
                         <ul>
-                            {% for mensagem in erro.mensagens %}
+                            {% for mensagem in erroSenha.mensagens %}
                             <li style="color: red;">{{ mensagem }}</li>
                             {% endfor %}
                         </ul>

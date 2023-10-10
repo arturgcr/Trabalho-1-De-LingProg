@@ -65,7 +65,7 @@ class BancoDeDados:
         except mysql.connector.Error as err:
             print(f"Erro ao inserir dados: {err}")
 
-    def ler_dados(self, tabela, colunas='*', condicao=None):
+    def ler_dados(self, tabela="usuarios", colunas='*', condicao=None):
         """
         Lê dados de uma tabela no banco de dados.
 
