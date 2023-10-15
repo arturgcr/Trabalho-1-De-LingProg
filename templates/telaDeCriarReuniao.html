@@ -1,19 +1,15 @@
-<!-- Selecionando que tipo de Reunião quer criar (com quem) -->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Opções</title>
+    <title>Criar Reunião</title>
     <link rel="stylesheet" href="/static/stylesDoCriarReuniao.css">
 </head>
 <body>
     <div class="options-container">
         <h1>Escolha as opções:</h1>
-        
+
         <label for="membros">Membros:</label>
         <select id="membros" name="membros" required>
             <option value="Opção1">Opção1</option>
@@ -51,12 +47,11 @@
             <option value="Projeto7">Sumô Lego</option>
             <option value="Projeto8">Indiferente</option>
         </select>
-        
+
+        <button type="button" onclick="voltar()">Voltar</button>
         <button class="options-button" onclick="obterOpcoes()">Confirmar</button>
     </div>
-    
     <script src="scripts.js"></script>
-    <button type="button" onclick="voltar()">Voltar</button>
 
     <script>
         function voltar() {

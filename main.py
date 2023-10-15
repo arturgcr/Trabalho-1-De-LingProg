@@ -5,9 +5,7 @@ import threading
 from tratamentoDeErro import *
 from bancoDeDados import *
 
-erro = ""
-
-app = Flask(__name__)
+app = Flask(__name__,static_folder='static')
 bd = BancoDeDados()
 # TO DO: REVISAR IMPLEMENTAÇÃO DA PAGINAÇÃO DIVIDIDA OU INSERIR TODAS EM UM LUGAR SÓ.
 
@@ -31,7 +29,7 @@ def tela_de_login():
                 return redirect('/Opcoes')
     
     # Renderiza a tela de login por padrão ou em caso de falha no login
-    return render_template("telaDeLogin.html")
+    return render_template("telaDeLogin.html", falha=True)
 
 # Rota da tela de cadastro
 @app.route('/Cadastro', methods=['POST', 'GET'])

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles.css">
-    <title>Login - Google Agenda</title>
+    <link rel="stylesheet" href="/static/styleLogin.css">
 </head>
 <body>
     <div class="login-container">
         <div class="login-box">
+            <img src="/static/logoBots.png" alt="Logo" class="logo">
             <h1>Login</h1>
             <form action="#" method="POST">
                 <div class="input-group">
@@ -19,9 +19,13 @@
                     <label for="senha">Senha:</label>
                     <input type="password" id="senha" name="senha" required>
                 </div>
+                {% if request.method == 'POST' and falha %}
+                <ul>
+                    <li style="color: red;">Usuário ou senha inválido</li>
+                </ul>
+                {% endif %}
                 <button type="submit">Entrar</button>
             </form>
-            <p class="esqueceu_a_senha"><a href="#">Esqueceu sua senha?</a></p>
             <p class="link_de_cadastro">Ainda não tem uma conta? <a class="meu-botao" data-identificador="botaoChamaTelaDeCadastro" href="/Cadastro">Cadastre-se</a></p>
         </div>
     </div>

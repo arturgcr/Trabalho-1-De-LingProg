@@ -12,7 +12,6 @@ FEITO:
 FALTA:
 
 - Código
-    - Banco de dados
     - Visualizar horários individualmente
     - Dar match em horários
     - Terminar de estilizar o aplicativo
@@ -20,11 +19,5 @@ FALTA:
 
 - Apresentação
 - Relatório
-
-
-- Banco de dados
-    - função pra escrever
-    - função pra pegar
-    - do MongoDB (so c++) ; 
 
 - Oracle, MySQL, Microsoft SQL Server, PostgreSQL, IBM DB2
