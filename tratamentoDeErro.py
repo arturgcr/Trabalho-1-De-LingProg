@@ -49,3 +49,12 @@ def verificar_cadastro_usuario(nome, email):
 
     if mensagens:
         raise VerificaErro(mensagens)
+    
+def verifica_preenchimento_dos_campos(area, projeto):
+    mensagens = []
+    if area == []:
+        mensagens.append("Selecione pelo menos uma área.")
+    if projeto == []:
+        mensagens.append("Selecione pelo menos um projeto.")
+    if mensagens:
+        raise VerificaErro(mensagens)

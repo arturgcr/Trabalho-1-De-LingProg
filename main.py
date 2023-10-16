@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify
 from pymongo import MongoClient
 import webbrowser
 import threading
@@ -7,6 +7,9 @@ from bancoDeDados import *
 
 app = Flask(__name__,static_folder='static')
 bd = BancoDeDados()
+bd.excluir_dado("area", "FK_area_usuario_email", "arturgcr78@gmail.com")
+bd.excluir_dado("projeto","FK_projeto_usuario_email", "arturgcr78@gmail.com")
+bd.excluir_dado("usuario","email", "arturgcr78@gmail.com")
 # TO DO: REVISAR IMPLEMENTAÇÃO DA PAGINAÇÃO DIVIDIDA OU INSERIR TODAS EM UM LUGAR SÓ.
 
 # Rota Inicial
@@ -23,28 +26,34 @@ def tela_de_login():
         listaDeUsuarios = bd.ler_dados()
         email = request.form.get("email")
         senha = request.form.get("senha")
-        for usuario in listaDeUsuarios:
-            if email ==  usuario[1] and senha == usuario[2]:
+        #for usuario in listaDeUsuarios:
+            # if email ==  usuario[1] and senha == usuario[2]:
                 # Redireciona para a tela de menu de opções se o login for bem-sucedido
-                return redirect('/Opcoes')
+        return redirect('/Opcoes')
     
     # Renderiza a tela de login por padrão ou em caso de falha no login
     return render_template("telaDeLogin.html", falha=True)
 
+
+
 # Rota da tela de cadastro
 @app.route('/Cadastro', methods=['POST', 'GET'])
 def telaDeCadastro():
-    
-    # Obtém os dados dos campos de texto da tela de cadastro
-    nome = request.form.get("nome")
-    email = request.form.get("email")
-    senha = request.form.get("senha")
-    confirmarSenha = request.form.get("confirmar_senha")
-    cargo = request.form.get("cargos")
-    projeto = request.form.get("projetos")
-    area = request.form.get("areas")
-
     if request.method == 'POST':
+        # Obtém os dados dos campos de texto da tela de cadastro
+        areas = request.form.getlist("areas")
+        projetos = request.form.getlist("projetos")
+        nome = request.form.get("nome")
+        email = request.form.get("email")
+        senha = request.form.get("senha")
+        confirmarSenha = request.form.get("confirmar_senha")
+        cargo = request.form.get("cargos")
+        
+        # Agora, para áreas e projetos, que são múltiplos, use request.getlist
+        print("lista cheia:")
+        print(areas)
+        print(projetos)
+
         try:
             verificar_senha(senha, confirmarSenha)
         except VerificaErro as erroSenha:
@@ -54,35 +63,39 @@ def telaDeCadastro():
             verificar_cadastro_usuario(nome, email)
         except VerificaErro as erroEmail:
             return render_template('telaDeCadastro.html', erroEmail=erroEmail)
+        
+        try:
+            verifica_preenchimento_dos_campos(areas, projetos)
+        except VerificaErro as erroCampos:
+            return render_template('telaDeCadastro.html', erroCampos=erroCampos)
 
-        bd.inserir_usuario("usuarios", str(nome), str(email), str(senha), str(cargo), str(projeto), str(area))
+        bd.inserir_usuario(nome, email, senha, cargo)
+
+        for area in areas:
+            bd.inserir_area(area, email)
+        
+        for projeto in projetos:
+            bd.inserir_projeto(projeto, email)
+        
         return redirect('/Opcoes')
+    
     # Lógica da tela de cadastro
     return render_template('telaDeCadastro.html')
+
 
 # Rota de Opções
 @app.route('/Opcoes', methods=["POST", "GET"])
 def telaDeOpcoes():
     return render_template('telaDoMenuDeOpcoes.html')
 
-# Rota de Editar horários online
-@app.route('/editarHorariosOnline', methods=['POST', 'GET'])
+@app.route('/editarHorarios', methods=['POST', 'GET'])
 def editar_horarios():
-    print(request.form.getlist('horario')) #para pegar todos os checkboxes
     if request.method == 'POST':
-        print(request.form.getlist('horario')) # pegar somente os checkboxes mmarcados
+        valor_modificado = request.form['valorHidden']
+        print(valor_modificado)
+        print(request.form.getlist('horario'))  # pegar somente os checkboxes marcados
 
-        return redirect('/editarHorariosPresencial')
-    # Lógica para a página de edição de horários
-    return render_template('telaDeAdicaoDeHorariosOnline.html')
-
-# Rota de Editar horários presencial
-@app.route('/editarHorariosPresencial', methods=["POST", "GET"])
-def editar_horario_Presencial():
-    if request.method == 'POST':
-        return redirect('/Opcoes')
-    # Lógica para a página de criação de reunião
-    return render_template('telaDeAdicaoDeHorariosPresencial.html')
+    return render_template('telaDeAdicaoDeHorarios.html')
 
 # Rota de criar reunião
 @app.route('/criarReuniao')

@@ -7,8 +7,70 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="login-box">
-            <h1>Cadastro</h1>
+        <div class="sidebar">
+            <h2>Cadastro</h2>
+            <div class="input-group">
+                <label for="cargos">Cargos:</label>
+                <select id="cargos" name="cargos" required>
+                    <option value="Trainne">Trainne</option>
+                    <option value="Membro">Membro</option>
+                    <option value="Liderança">Liderança</option>
+                    <option value="Gestão">Gestão</option>
+                    <option value="Indiferente">Indiferente</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="areas">Áreas:</label>
+                <div id="areas">
+                    <label>
+                        <input type="checkbox" name="areas[]" value="Eletroprog" {% if "Eletroprog" in areas %}checked{% endif %}> Eletroprog
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas[]" value="Mecânico" {% if "Mecânico" in areas %}checked{% endif %}> Mecânico
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas[]" value="Administração" {% if "Administração" in areas %}checked{% endif %}> Administração
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas[]" value="Marketing" {% if "Marketing" in areas %}checked{% endif %}> Marketing
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas[]" value="Gestão" {% if "Gestão" in areas %}checked{% endif %}> Gestão
+                    </label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="projetos">Projetos:</label>
+                <div id="projetos">
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Combate Grande" {% if "Combate Grande" in projetos %}checked{% endif %}> Combate Grande
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Combate Pequeno" {% if "Combate Pequeno" in projetos %}checked{% endif %}> Combate Pequeno
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Seguidor de Linha" {% if "Seguidor de Linha" in projetos %}checked{% endif %}> Seguidor de Linha
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Trekking" {% if "Trekking" in projetos %}checked{% endif %}> Trekking
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Sumô Mini" {% if "Sumô Mini" in projetos %}checked{% endif %}> Sumô Mini
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Sumô 3KG" {% if "Sumô 3KG" in projetos %}checked{% endif %}> Sumô 3KG
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Sumô Lego" {% if "Sumô Lego" in projetos %}checked{% endif %}> Sumô Lego
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos[]" value="Indiferente" {% if "Indiferente" in projetos %}checked{% endif %}> Indiferente
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>Cadastro Geral</h1>
             <form action="#" method="POST">
                 <div class="input-group">
                     <label for="nome">Nome:</label>
@@ -39,40 +101,6 @@
                 <div class="input-group">
                     <label for="confirmar_senha">Confirmar Senha:</label>
                     <input type="password" id="confirmar_senha" name="confirmar_senha" required>
-                </div>
-                <div class="input-group">
-                    <label for="cargos">Cargos:</label>
-                    <select id="cargos" name="cargos" required>
-                        <option value="Trainne">Trainne</option>
-                        <option value="Membro">Membro</option>
-                        <option value="Liderança">Liderança</option>
-                        <option value="Gestão">Gestão</option>
-                        <option value="Indiferente">Indiferente</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="projetos">Projetos:</label>
-                    <select id="projetos" name="projetos" required>
-                        <option value="Combate Grande">Combate Grande</option>
-                        <option value="Combate Pequeno">Combate Pequeno</option>
-                        <option value="Seguidor de Linha">Seguidor de Linha</option>
-                        <option value="Trekking">Trekking</option>
-                        <option value="Sumô Mini">Sumô Mini</option>
-                        <option value="Sumô 3KG">Sumô 3KG</option>
-                        <option value="Sumô Lego">Sumô Lego</option>
-                        <option value="Indiferente">Indiferente</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="areas">Áreas:</label>
-                    <select id="areas" name="areas" required>
-                        <option value="Eletroprog">Eletroprog</option>
-                        <option value="Mecânico">Mecânico</option>
-                        <option value="Administração">Administração</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Gestão">Gestão</option>
-                        <option value="Indiferente">Indiferente</option>
-                    </select>
                 </div>
                 <button type="submit">Cadastrar</button>
             </form>

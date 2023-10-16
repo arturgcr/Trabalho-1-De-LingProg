@@ -3,7 +3,7 @@ from mysql.connector import Error
 import pandas as pd
 
 class BancoDeDados:
-    def __init__(self, host="localhost", usuario="usuario", senha="senha", banco_de_dados="usuarios"):
+    def __init__(self, host="localhost", usuario="admBots", senha="senha", banco_de_dados="minervabots"):
         """
         Inicializa a classe BancoDeDados com as informações de conexão.
         
@@ -37,7 +37,7 @@ class BancoDeDados:
             self.conexao.close()
             print("Conexão ao banco de dados encerrada.")
 
-    def inserir_usuario(self, tabela, nome, email, senha, cargo, projeto, area):
+    def inserir_usuario(self, nome, email, senha, cargo):
         """
         Insere dados em uma tabela específica no banco de dados.
 
@@ -50,22 +50,56 @@ class BancoDeDados:
             "email": email,
             "senha": senha,
             "cargo": cargo,
-            "projeto": projeto,
-            "area": area
         }
         try:
             cursor = self.conexao.cursor()
             placeholders = ', '.join(['%s' for _ in dados])
             colunas = ', '.join(dados.keys())
             valores = tuple(dados.values())
-            consulta = f"INSERT INTO {tabela} ({colunas}) VALUES ({placeholders})"
+            consulta = f"INSERT INTO usuario ({colunas}) VALUES ({placeholders})"
             cursor.execute(consulta, valores)
             self.conexao.commit()
             print("Dados inseridos com sucesso.")
         except mysql.connector.Error as err:
             print(f"Erro ao inserir dados: {err}")
 
-    def ler_dados(self, tabela="usuarios", colunas='*', condicao=None):
+    def inserir_area(self, nome_area, email_usuario):
+        """
+        Insere dados em uma tabela de áreas associados a um usuário específico.
+
+        Parametros:
+            nome_area (str): Nome da área a ser inserida.
+            email_usuario (str): Email do usuário ao qual a área está associada.
+        """
+        try:
+            cursor = self.conexao.cursor()
+            consulta = "INSERT INTO area (nome_area, FK_area_usuario_email) VALUES (%s, %s)"
+            valores = (nome_area, email_usuario)
+            cursor.execute(consulta, valores)
+            self.conexao.commit()
+            print("Dados de área inseridos com sucesso.")
+        except mysql.connector.Error as err:
+            print(f"Erro ao inserir dados de área: {err}")
+
+    def inserir_projeto(self, nome_projeto, email_usuario):
+        """
+        Insere dados em uma tabela de projetos associados a um usuário específico.
+
+        Parametros:
+            nome_projeto (str): Nome do projeto a ser inserido.
+            email_usuario (str): Email do usuário ao qual o projeto está associado.
+        """
+        try:
+            cursor = self.conexao.cursor()
+            consulta = "INSERT INTO projeto (nome_projeto, FK_projeto_usuario_email) VALUES (%s, %s)"
+            valores = (nome_projeto, email_usuario)
+            cursor.execute(consulta, valores)
+            self.conexao.commit()
+            print("Dados de projeto inseridos com sucesso.")
+        except mysql.connector.Error as err:
+            print(f"Erro ao inserir dados de projeto: {err}")
+
+    def ler_dados(self, tabela="usuario", colunas='*', condicao=None):
         """
         Lê dados de uma tabela no banco de dados.
 
@@ -140,12 +174,11 @@ class BancoDeDados:
 
 
 
-    def excluir_usuario(self, tabela, identificador, selecionado):
+    def excluir_dado(self, tabela, identificador, selecionado):
         """
         Exclui um usuário por completo do banco de dados.
 
         Parametros:
-            tabela (str): Nome da tabela onde o usuário será excluído.
             id_usuario (int): O ID (ou outra identificação única) do usuário a ser excluído.
         """
         try:
