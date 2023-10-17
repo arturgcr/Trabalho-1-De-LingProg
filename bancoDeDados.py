@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
-import pandas as pd
+import json
 
 class BancoDeDados:
     def __init__(self, host="localhost", usuario="admBots", senha="senha", banco_de_dados="minervabots"):
@@ -62,6 +62,60 @@ class BancoDeDados:
             print("Dados inseridos com sucesso.")
         except mysql.connector.Error as err:
             print(f"Erro ao inserir dados: {err}")
+
+
+    def inserir_horarios(self, email_usuario, horarios, tipo):
+        try:
+            cursor = self.conexao.cursor()
+
+            horarios_dict = {
+                'segunda': '',
+                'terca': '',
+                'quarta': '',
+                'quinta': '',
+                'sexta': '',
+                'sabado': '',
+                'email': email_usuario
+            }
+
+            for horario in horarios:
+                dia_da_semana = horario[-1]
+
+                # Mapeia o dia da semana para a coluna apropriada.
+                coluna = None
+
+                if dia_da_semana == 'A':
+                    coluna = 'segunda'
+                elif dia_da_semana == 'B':
+                    coluna = 'terca'
+                elif dia_da_semana == 'C':
+                    coluna = 'quarta'
+                elif dia_da_semana == 'D':
+                    coluna = 'quinta'
+                elif dia_da_semana == 'E':
+                    coluna = 'sexta'
+                elif dia_da_semana == 'F':
+                    coluna = 'sabado'
+
+                if coluna:
+                    horarios_dict[coluna] = "_".join([horarios_dict[coluna], horario[0:-1]])
+
+            if tipo == 'Online':
+                self.excluir_dado("horarios_online", "FK_horarios_online_email", email_usuario)
+                consulta = f"INSERT INTO horarios_online (segunda, terca, quarta, quinta, sexta, sabado, FK_horarios_online_email) VALUES (%(segunda)s, %(terca)s, %(quarta)s, %(quinta)s, %(sexta)s, %(sabado)s, %(email)s)"
+            else:
+                self.excluir_dado("horarios_presencial", "FK_horarios_presencial_email", email_usuario)
+                consulta = f"INSERT INTO horarios_presencial (segunda, terca, quarta, quinta, sexta, sabado, FK_horarios_presencial_email) VALUES (%(segunda)s, %(terca)s, %(quarta)s, %(quinta)s, %(sexta)s, %(sabado)s, %(email)s)"
+
+            cursor.execute(consulta, horarios_dict)
+            self.conexao.commit()
+
+            print("Horários inseridos com sucesso.")
+        except mysql.connector.Error as err:
+            print(f"Erro ao inserir horários: {err}")
+
+
+
 
     def inserir_area(self, nome_area, email_usuario):
         """
@@ -186,6 +240,6 @@ class BancoDeDados:
             consulta = f"DELETE FROM {tabela} WHERE {identificador} = %s" 
             cursor.execute(consulta, (selecionado,))
             self.conexao.commit()
-            print("Usuário excluído com sucesso.")
+            print("Dado excluído com sucesso.")
         except mysql.connector.Error as err:
-            print(f"Erro ao excluir usuário: {err}")
+            print(f"Erro ao excluir dado: {err}")

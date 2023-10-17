@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="/static/styleCadastro.css"> <!-- Use o mesmo arquivo CSS da tela de login -->
 </head>
 <body>
+    <form action="/Cadastro" method="POST">
     <div class="login-container">
         <div class="sidebar">
-            <h2>Cadastro</h2>
             <div class="input-group">
                 <label for="cargos">Cargos:</label>
                 <select id="cargos" name="cargos" required>
@@ -20,53 +20,49 @@
                 </select>
             </div>
             <div class="input-group">
-                <label for="areas">Áreas:</label>
-                <div id="areas">
+                <label>Áreas:</label>
                     <label>
-                        <input type="checkbox" name="areas[]" value="Eletroprog" {% if "Eletroprog" in areas %}checked{% endif %}> Eletroprog
+                        <input type="checkbox" name="areas" value="Administração"> Administração
                     </label>
                     <label>
-                        <input type="checkbox" name="areas[]" value="Mecânico" {% if "Mecânico" in areas %}checked{% endif %}> Mecânico
+                        <input type="checkbox" name="areas" value="Eletroprog"> Eletroprog
                     </label>
                     <label>
-                        <input type="checkbox" name="areas[]" value="Administração" {% if "Administração" in areas %}checked{% endif %}> Administração
+                        <input type="checkbox" name="areas" value="Mecânica"> Mecânica
                     </label>
                     <label>
-                        <input type="checkbox" name="areas[]" value="Marketing" {% if "Marketing" in areas %}checked{% endif %}> Marketing
+                        <input type="checkbox" name="areas" value="Gestão"> Gestão
                     </label>
                     <label>
-                        <input type="checkbox" name="areas[]" value="Gestão" {% if "Gestão" in areas %}checked{% endif %}> Gestão
+                        <input type="checkbox" name="areas" value="Marketing"> Marketing
                     </label>
-                </div>
             </div>
             <div class="input-group">
-                <label for="projetos">Projetos:</label>
-                <div id="projetos">
+                <label>Projetos:</label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Combate Grande" {% if "Combate Grande" in projetos %}checked{% endif %}> Combate Grande
+                        <input type="checkbox" name="projetos" value="Combate Grande"> Combate Grande
                     </label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Combate Pequeno" {% if "Combate Pequeno" in projetos %}checked{% endif %}> Combate Pequeno
+                        <input type="checkbox" name="projetos" value="Combate Pequeno"> Combate Pequeno
                     </label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Seguidor de Linha" {% if "Seguidor de Linha" in projetos %}checked{% endif %}> Seguidor de Linha
+                        <input type="checkbox" name="projetos" value="LEGO"> LEGO
                     </label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Trekking" {% if "Trekking" in projetos %}checked{% endif %}> Trekking
+                        <input type="checkbox" name="projetos" value="Sumô Mini"> Sumô Mini
                     </label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Sumô Mini" {% if "Sumô Mini" in projetos %}checked{% endif %}> Sumô Mini
+                        <input type="checkbox" name="projetos" value="Sumô 3Kg"> Sumô 3Kg
                     </label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Sumô 3KG" {% if "Sumô 3KG" in projetos %}checked{% endif %}> Sumô 3KG
+                        <input type="checkbox" name="projetos" value="Trekking"> Trekking
                     </label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Sumô Lego" {% if "Sumô Lego" in projetos %}checked{% endif %}> Sumô Lego
+                        <input type="checkbox" name="projetos" value="Seguidor"> Seguidor
                     </label>
                     <label>
-                        <input type="checkbox" name="projetos[]" value="Indiferente" {% if "Indiferente" in projetos %}checked{% endif %}> Indiferente
+                        <input type="checkbox" name="projetos" value="Indiferente"> Indiferente
                     </label>
-                </div>
             </div>
         </div>
         <div class="main-content">
@@ -102,10 +98,18 @@
                     <label for="confirmar_senha">Confirmar Senha:</label>
                     <input type="password" id="confirmar_senha" name="confirmar_senha" required>
                 </div>
-                <button type="submit">Cadastrar</button>
+                {% if request.method == 'POST' and erroCampo %}
+                <ul>
+                    {% for mensagem in erroCampo.mensagens %}
+                    <li style="color: red;">{{ mensagem }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <button type="submit" class="botao-cadastrar">Cadastrar</button>
             </form>
             <p class="mt-3 text-center">Já tem uma conta? <a href="/Login">Faça o login</a></p>
         </div>
     </div>
+</form>
 </body>
 </html>

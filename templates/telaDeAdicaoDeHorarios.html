@@ -1,53 +1,33 @@
-<!-- 
-Adicionar meus horarios 
-// td - linhas
-// th - colunas
-
--->
-
-
-    <!DOCTYPE html>
-<html lang="pt-br"> <!-- idioma-->
-<head> 
-    <meta charset="UTF-8"> <!--garante que o conteúdo seja exibido corretamente em diferentes plataformas-->
-    <meta name= "horario" value="viewport" content="width=device-width, initial-scale=1.0"> <!--fornece ao navegador instruções sobre como controlar o dimensionamento da página quando acessada de diferentes tamanhos de dispositivos.-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/stylesAdicaodeHorarios.css">
-    <title>Adicionar meus Horários</title> <!-- titulo para nortear o link da pagina -->
+    <title>Adicionar meus Horários</title>
 </head>
+
 <body>
-    <button id="meuBotao" onclick="mudarTexto()">Clique em mim</button>
-    <p>Valor Atual: <span id="valorAtual">Nenhum</span></p>
-    <input type="hidden" id="valorHidden" name="valorHidden" value="Nenhum">
-</body>
-<script>
-function mudarTexto() {
-    var botao = document.getElementById('meuBotao');
-    var valorAtual = document.getElementById('valorAtual');
-    var valorHidden = document.getElementById('valorHidden');
-
-    // Muda o texto do botão
-    botao.innerHTML = "Texto Modificado";
-    
-    // Atualiza o valor atual
-    valorAtual.innerHTML = "Texto Modificado";
-
-    // Atualiza o valor hidden que será enviado para o Flask
-    valorHidden.value = "Texto Modificado";
-}
-</script>
-        <form action="#" method="POST">
-            <div class="signup-container2">
-                <table border="1">
-                    <tr> <!-- Defino colunas com os dias -->
-                        <th></th>
-                        <th>Segunda</th>
-                        <th>Terça</th>
-                        <th>Quarta</th>
-                        <th>Quinta</th>
-                        <th>Sexta</th>
-                        <th>Sábado</th>
-                        <th>Domingo</th>
-                    </tr>
+    <header>
+        <h1>Adicionar meus Horários</h1>
+    </header>
+    <form action="/editarHorarios" method="POST">
+        <ul>
+            <button type="submit" name="alterar_estado" value="alterar_estado" class="estado-button">
+                {{ estado }}
+            </button>
+        </ul>
+    <div class="signup-container2">
+        <table class="horario-table" border="1">
+            <tr>
+                <th></th>
+                <th class="dia-header">Segunda</th>
+                <th class="dia-header">Terça</th>
+                <th class="dia-header">Quarta</th>
+                <th class="dia-header">Quinta</th>
+                <th class="dia-header">Sexta</th>
+                <th class="dia-header">Sábado</th>
+            </tr>
 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>0</td> 
@@ -57,7 +37,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="0D"></td>
                         <td><input type="checkbox" name= "horario" value="0E"></td>
                         <td><input type="checkbox" name= "horario" value="0F"></td>
-                        <td><input type="checkbox" name= "horario" value="0G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>1</td> 
@@ -67,7 +47,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="1D"></td>
                         <td><input type="checkbox" name= "horario" value="1E"></td>
                         <td><input type="checkbox" name= "horario" value="1F"></td>
-                        <td><input type="checkbox" name= "horario" value="1G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>2</td> 
@@ -77,7 +57,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="2D"></td>
                         <td><input type="checkbox" name= "horario" value="2E"></td>
                         <td><input type="checkbox" name= "horario" value="2F"></td>
-                        <td><input type="checkbox" name= "horario" value="2G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>3</td> 
@@ -87,7 +67,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="3D"></td>
                         <td><input type="checkbox" name= "horario" value="3E"></td>
                         <td><input type="checkbox" name= "horario" value="3F"></td>
-                        <td><input type="checkbox" name= "horario" value="3G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>4</td> 
@@ -97,7 +77,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="4D"></td>
                         <td><input type="checkbox" name= "horario" value="4E"></td>
                         <td><input type="checkbox" name= "horario" value="4F"></td>
-                        <td><input type="checkbox" name= "horario" value="4G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>5</td> 
@@ -107,7 +87,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="5D"></td>
                         <td><input type="checkbox" name= "horario" value="5E"></td>
                         <td><input type="checkbox" name= "horario" value="5F"></td>
-                        <td><input type="checkbox" name= "horario" value="5G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>6</td> 
@@ -117,7 +97,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="6D"></td>
                         <td><input type="checkbox" name= "horario" value="6E"></td>
                         <td><input type="checkbox" name= "horario" value="6F"></td>
-                        <td><input type="checkbox" name= "horario" value="6G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>7</td> 
@@ -127,7 +107,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="7D"></td>
                         <td><input type="checkbox" name= "horario" value="7E"></td>
                         <td><input type="checkbox" name= "horario" value="7F"></td>
-                        <td><input type="checkbox" name= "horario" value="7G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>8</td> 
@@ -137,7 +117,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="8D"></td>
                         <td><input type="checkbox" name= "horario" value="8E"></td>
                         <td><input type="checkbox" name= "horario" value="8F"></td>
-                        <td><input type="checkbox" name= "horario" value="8G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>9</td> 
@@ -147,7 +127,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="9D"></td>
                         <td><input type="checkbox" name= "horario" value="9E"></td>
                         <td><input type="checkbox" name= "horario" value="9F"></td>
-                        <td><input type="checkbox" name= "horario" value="9G"></td>
+            
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>10</td> 
@@ -157,7 +137,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="10D"></td>
                         <td><input type="checkbox" name= "horario" value="10E"></td>
                         <td><input type="checkbox" name= "horario" value="10F"></td>
-                        <td><input type="checkbox" name= "horario" value="10G"></td>
+                
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>11</td> 
@@ -167,7 +147,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="11D"></td>
                         <td><input type="checkbox" name= "horario" value="11E"></td>
                         <td><input type="checkbox" name= "horario" value="11F"></td>
-                        <td><input type="checkbox" name= "horario" value="11G"></td>
+                
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>12</td> 
@@ -177,7 +157,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="12D"></td>
                         <td><input type="checkbox" name= "horario" value="12E"></td>
                         <td><input type="checkbox" name= "horario" value="12F"></td>
-                        <td><input type="checkbox" name= "horario" value="12G"></td>
+                
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>13</td> 
@@ -187,7 +167,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="13D"></td>
                         <td><input type="checkbox" name= "horario" value="13E"></td>
                         <td><input type="checkbox" name= "horario" value="13F"></td>
-                        <td><input type="checkbox" name= "horario" value="13G"></td>
+                
                     </tr>   
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>14</td> 
@@ -197,7 +177,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="14D"></td>
                         <td><input type="checkbox" name= "horario" value="14E"></td>
                         <td><input type="checkbox" name= "horario" value="14F"></td>
-                        <td><input type="checkbox" name= "horario" value="14G"></td>
+                
                     </tr>
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>15</td> 
@@ -207,7 +187,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="15D"></td>
                         <td><input type="checkbox" name= "horario" value="15E"></td>
                         <td><input type="checkbox" name= "horario" value="15F"></td>
-                        <td><input type="checkbox" name= "horario" value="15G"></td>
+                
                     </tr>   
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>16</td> 
@@ -217,7 +197,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="16D"></td>
                         <td><input type="checkbox" name= "horario" value="16E"></td>
                         <td><input type="checkbox" name= "horario" value="16F"></td>
-                        <td><input type="checkbox" name= "horario" value="16G"></td>
+                
                     </tr> 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>17</td> 
@@ -227,7 +207,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="17D"></td>
                         <td><input type="checkbox" name= "horario" value="17E"></td>
                         <td><input type="checkbox" name= "horario" value="17F"></td>
-                        <td><input type="checkbox" name= "horario" value="17G"></td>
+                
                     </tr> 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>18</td> 
@@ -237,7 +217,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="18D"></td>
                         <td><input type="checkbox" name= "horario" value="18E"></td>
                         <td><input type="checkbox" name= "horario" value="18F"></td>
-                        <td><input type="checkbox" name= "horario" value="18G"></td>
+                
                     </tr> 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>19</td> 
@@ -247,7 +227,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="19D"></td>
                         <td><input type="checkbox" name= "horario" value="19E"></td>
                         <td><input type="checkbox" name= "horario" value="19F"></td>
-                        <td><input type="checkbox" name= "horario" value="19G"></td>
+                
                     </tr> 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>20</td> 
@@ -257,7 +237,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="20D"></td>
                         <td><input type="checkbox" name= "horario" value="20E"></td>
                         <td><input type="checkbox" name= "horario" value="20F"></td>
-                        <td><input type="checkbox" name= "horario" value="20G"></td>
+                
                     </tr> 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>21</td> 
@@ -267,7 +247,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="21D"></td>
                         <td><input type="checkbox" name= "horario" value="21E"></td>
                         <td><input type="checkbox" name= "horario" value="21F"></td>
-                        <td><input type="checkbox" name= "horario" value="21G"></td>
+                
                     </tr> 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>22</td> 
@@ -277,7 +257,7 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="22D"></td>
                         <td><input type="checkbox" name= "horario" value="22E"></td>
                         <td><input type="checkbox" name= "horario" value="22F"></td>
-                        <td><input type="checkbox" name= "horario" value="22G"></td>
+                
                     </tr> 
                     <tr>  <!-- Defino linhas com os horários e checkbox -->
                         <td>23</td> 
@@ -287,21 +267,32 @@ function mudarTexto() {
                         <td><input type="checkbox" name= "horario" value="23D"></td>
                         <td><input type="checkbox" name= "horario" value="23E"></td>
                         <td><input type="checkbox" name= "horario" value="23F"></td>
-                        <td><input type="checkbox" name= "horario" value="23G"></td>
+                
                     </tr> 
                 </div>
             </div>
         </div>
         </table>
-        <br>
-        <input type="submit" value="Continuar">
-        <button type="button" onclick="voltar()">Voltar</button>
-
-        <script>
-            function voltar() {
-                window.history.back();
-            }
-        </script>
+        
+        <div class="button-container">
+            <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
+            <input type="submit" value="Continuar" class="continuar-button">
+        </div>
     </form>
+
+    <script>
+        function voltar() {
+            window.history.back();
+        }
+
+        function alterarEstado(estadoAtual) {
+            if (estadoAtual === "Online") {
+                estadoAtual = "Presencial";
+            } else {
+                estadoAtual = "Online";
+            }
+            document.querySelector("button[name=alterar_estado]").textContent = estadoAtual;
+        }
+    </script>
 </body>
 </html>

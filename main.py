@@ -4,12 +4,10 @@ import webbrowser
 import threading
 from tratamentoDeErro import *
 from bancoDeDados import *
+from usuario import *
 
 app = Flask(__name__,static_folder='static')
 bd = BancoDeDados()
-bd.excluir_dado("area", "FK_area_usuario_email", "arturgcr78@gmail.com")
-bd.excluir_dado("projeto","FK_projeto_usuario_email", "arturgcr78@gmail.com")
-bd.excluir_dado("usuario","email", "arturgcr78@gmail.com")
 # TO DO: REVISAR IMPLEMENTAÇÃO DA PAGINAÇÃO DIVIDIDA OU INSERIR TODAS EM UM LUGAR SÓ.
 
 # Rota Inicial
@@ -21,15 +19,17 @@ def index():
 # Rota de Login
 @app.route("/Login", methods=["POST", "GET"])
 def tela_de_login():
+    global usuario_logado
     # No if abaixo devemos inserir a comparação com o banco de dados, levando usuario e senha em consideração
     if request.method == 'POST':
         listaDeUsuarios = bd.ler_dados()
         email = request.form.get("email")
         senha = request.form.get("senha")
-        #for usuario in listaDeUsuarios:
-            # if email ==  usuario[1] and senha == usuario[2]:
+        for usuario in listaDeUsuarios:
+            if email ==  usuario[1] and senha == usuario[2]:
+                usuario_logado = Usuario(usuario[0], usuario[1], usuario[2], usuario[3]) #nome, email, senha, cargo
                 # Redireciona para a tela de menu de opções se o login for bem-sucedido
-        return redirect('/Opcoes')
+                return redirect('/Opcoes')
     
     # Renderiza a tela de login por padrão ou em caso de falha no login
     return render_template("telaDeLogin.html", falha=True)
@@ -48,11 +48,6 @@ def telaDeCadastro():
         senha = request.form.get("senha")
         confirmarSenha = request.form.get("confirmar_senha")
         cargo = request.form.get("cargos")
-        
-        # Agora, para áreas e projetos, que são múltiplos, use request.getlist
-        print("lista cheia:")
-        print(areas)
-        print(projetos)
 
         try:
             verificar_senha(senha, confirmarSenha)
@@ -66,8 +61,8 @@ def telaDeCadastro():
         
         try:
             verifica_preenchimento_dos_campos(areas, projetos)
-        except VerificaErro as erroCampos:
-            return render_template('telaDeCadastro.html', erroCampos=erroCampos)
+        except VerificaErro as erroCampo:
+            return render_template('telaDeCadastro.html', erroCampo=erroCampo)
 
         bd.inserir_usuario(nome, email, senha, cargo)
 
@@ -77,7 +72,7 @@ def telaDeCadastro():
         for projeto in projetos:
             bd.inserir_projeto(projeto, email)
         
-        return redirect('/Opcoes')
+        return redirect('/Login')
     
     # Lógica da tela de cadastro
     return render_template('telaDeCadastro.html')
@@ -88,14 +83,26 @@ def telaDeCadastro():
 def telaDeOpcoes():
     return render_template('telaDoMenuDeOpcoes.html')
 
+estado = "Online"
 @app.route('/editarHorarios', methods=['POST', 'GET'])
 def editar_horarios():
-    if request.method == 'POST':
-        valor_modificado = request.form['valorHidden']
-        print(valor_modificado)
-        print(request.form.getlist('horario'))  # pegar somente os checkboxes marcados
+    global estado
 
-    return render_template('telaDeAdicaoDeHorarios.html')
+    if 'alterar_estado' in request.form:
+        if estado == "Online":
+            estado = "Presencial"
+        else:
+            estado = "Online"
+
+    if request.method == 'POST':
+        horarios_livre = request.form.getlist('horario')
+        if horarios_livre != []: 
+            print(horarios_livre)
+            bd.inserir_horarios(usuario_logado.email, horarios_livre, estado)
+
+    return render_template('telaDeAdicaoDeHorarios.html', estado=estado)
+
+
 
 # Rota de criar reunião
 @app.route('/criarReuniao')

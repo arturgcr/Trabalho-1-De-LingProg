@@ -1,58 +1,70 @@
-/* stylesAdicaodeHorarios.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
 
-/* Estilo para a tabela */
-table {
-    border-collapse: collapse;
-    width: 100%;
+header {
+    background-color: rgba(158, 31, 34, 1);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+
+.button-container {
+    text-align: center;
     margin: 20px 0;
 }
 
-th, td {
-    border: 1px solid #ddd;
+.voltar-button, .continuar-button, .estado-button {
+    background-color: rgba(158, 31, 34, 1);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.voltar-button:hover, .continuar-button:hover, .estado-button:hover {
+    background-color: #ad1f22;
+}
+
+.signup-container2 {
+    padding: 20px;
+}
+
+table.horario-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.horario-table th.dia-header, table.horario-table td {
     padding: 8px;
     text-align: center;
 }
 
-/* Estilo para os checkboxes */
-input[type="checkbox"] {
-    transform: scale(1.5); /* Tamanho maior para os checkboxes */
+table.horario-table th.dia-header {
+    background-color: rgba(158, 31, 34, 1);
+    color: white;
 }
 
-/* Estilo para os botões */
-input[type="submit"], button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px;
+table.horario-table td {
+    background-color: #f2f2f2;
 }
 
-button {
-    background-color: #f44336;
-}
-
-/* Estilo para o container principal */
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 180vh;
-}
-
-.signup-box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-/* Estilo para os cabeçalhos */
-h1 {
-    color: #007BFF;
-}
-
-h2 {
-    color: #f44336;
+table.horario-table th:first-child, table.horario-table td:first-child {
+    background-color: white;
 }
