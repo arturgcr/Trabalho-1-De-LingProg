@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, url_for, redirect, session, jsonify
-from pymongo import MongoClient
 import webbrowser
 import threading
 from tratamentoDeErro import *
@@ -97,30 +96,58 @@ def editar_horarios():
     if request.method == 'POST':
         horarios_livre = request.form.getlist('horario')
         if horarios_livre != []: 
-            print(horarios_livre)
             bd.inserir_horarios(usuario_logado.email, horarios_livre, estado)
 
     return render_template('telaDeAdicaoDeHorarios.html', estado=estado)
 
-
-
 # Rota de criar reunião
-@app.route('/criarReuniao')
+@app.route('/criarReuniao', methods=['POST', 'GET'])
 def criar_reuniao():
+
     # Lógica para a página de criação de reunião
     return render_template('telaDeCriarReuniao.html')
 
 # Rota Editar Tag
-@app.route('/editarTAG')
+@app.route('/editarTAG', methods=['POST', 'GET'])
 def editar_tag():
+    areas = request.form.getlist("areas")
+    projetos = request.form.getlist("projetos")
+    if request.method == 'POST' and areas != []:
+        bd.excluir_dado("area", "FK_area_usuario_email", usuario_logado.email)
+        for area in areas:
+            bd.atualizar_area(area, usuario_logado.email)
+
+    if request.method == 'POST' and projetos != []:
+        bd.excluir_dado("projeto", "FK_projeto_usuario_email", usuario_logado.email)
+        for projeto in projetos:
+            bd.atualizar_projeto(projeto, usuario_logado.email)
+
     # Lógica para a página de edição de tag
     return render_template('telaDeEditarTAG.html')
 
-# Rota de visualizar horários
-@app.route('/visualizar')
+@app.route('/visualizar', methods=['POST', 'GET'])
 def visualizar():
-    # Lógica para a página de visualização
-    return render_template('telaDeHorarios.html')
+    global horarios
+    horarios=[]
+    horarios_formatados = []
+    if not horarios:
+        horarios = bd.ler_dados(tabela="horarios_online")
+
+    horarios_formatados = []  # Inicializa a lista de horários formatados
+
+    if request.method == 'POST':
+        elemento_de_filtro = request.form.get('pesquisa')
+        if elemento_de_filtro != '':
+            # Filtra a lista de horários com base no termo de pesquisa
+            horarios_filtrados = [horario for horario in horarios if elemento_de_filtro.lower() in horario[6].lower()]
+
+            # Formate os horários filtrados
+            for horario in horarios_filtrados:
+                horarios_divididos = [h.split('_') for h in horario[:6]]
+                email = horario[6]
+                horarios_formatados.append((horarios_divididos, email))
+
+    return render_template('telaDeVisualizacao.html', horarios=horarios_formatados)
 
 # Função para iniciar o site
 def inicia_site():

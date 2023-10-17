@@ -3,49 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edite sua TAG</title>
-    <link rel="stylesheet" href="/static/stylesDoCriarReuniao.css">
+    <link rel="stylesheet" href="/static/styleEditarTags.css"> <!-- Use o mesmo arquivo CSS da tela de login -->
 </head>
 <body>
-    <div class="options-container">
-        <h1>Editar TAG:</h1>
-        <label for="cargos">Cargos:</label>
-        <select id="cargos" name="cargos">
-            <option value="Opção1">Trainne</option>
-            <option value="Opção2">Membro</option>
-            <option value="Opção3">Liderança</option>
-            <option value="Opção4">Gestão</option>
-            <option value="Opção5">Indiferente</option>
-        </select>
+    <form action="/editarTAG" method="POST">
+    <div class="login-container">
+            <div class="input-group">
+                <label>Áreas:</label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Administração"> Administração
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Eletroprog"> Eletroprog
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Mecânica"> Mecânica
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Gestão"> Gestão
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Marketing"> Marketing
+                    </label>
+            </div>
+            <div class="input-group">
+                <label>Projetos:</label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Combate Grande"> Combate Grande
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Combate Pequeno"> Combate Pequeno
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="LEGO"> LEGO
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Sumô Mini"> Sumô Mini
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Sumô 3Kg"> Sumô 3Kg
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Trekking"> Trekking
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Seguidor"> Seguidor
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Indiferente"> Indiferente
+                    </label>
 
-        <label for="areas">Áreas:</label>
-        <select id="areas" name="areas">
-            <option value="Área1">Eletroprog</option>
-            <option value="Área2">Mecânico</option>
-            <option value="Área3">Administração</option>
-            <option value="Área4">Marketing</option>
-            <option value="Área5">Gestão</option>
-            <option value="Área6">Indiferente</option>
-        </select>
+                    <div class="button-container">
+                        <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
+                        <input type="submit" value="Confirmar" class="continuar-button">
+                    </div>
 
-        <label for="projetos">Projetos:</label>
-        <select id="projetos" name="projetos">
-            <option value="Projeto1">Combate Grande</option>
-            <option value="Projeto2">Combate Pequeno</option>
-            <option value="Projeto3">Seguidor de Linha</option>
-            <option value="Projeto4">Trekking</option>
-            <option value="Projeto5">Sumô Mini</option>
-            <option value="Projeto6">Sumô 3KG</option>
-            <option value="Projeto7">Sumô Lego</option>
-            <option value="Projeto8">Indiferente</option>
-        </select>
-        <button type="button" onclick="voltar()">Voltar</button>
-        <button class="options-button" onclick="obterOpcoes()">Confirmar</button>
+                    <script>
+                        function voltar() {
+                            window.history.back();
+                        }
+                    </script>
+        </div>
     </div>
-    <script>
-        function voltar() {
-            window.history.back();
-        }
-    </script>
+</form>
 </body>
 </html>

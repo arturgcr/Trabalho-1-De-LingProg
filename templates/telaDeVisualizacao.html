@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styleDeVizualizacao.css"> <!-- Use o arquivo CSS que você criou anteriormente -->
+    <title>Visualização de Horários</title>
+</head>
+<body>
+    <div class="background-container">
+        <img class="background-image" src="/static/logoBots.png" alt="Logo Bots">
+    </div>
+    <div class="horarios-container">
+        <h1>Visualização de Horários</h1>
+        
+        <!-- Campo de Pesquisa -->
+        <form method="POST" action="/visualizar">
+            <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar por nome ou email">
+            <button type="submit" id="botao_pesquisa">Pesquisar</button>
+        </form>           
+        <!-- Lista de Horários -->
+        <ul>
+            {% for horario, email in horarios %}
+            <li class="horario-item">
+                <div class="horario-info">
+                    <strong>Segunda:</strong> {{ horario[0] | join(' ') }}<br>
+                    <strong>Terça:</strong> {{ horario[1] | join(' ') }}<br>
+                    <strong>Quarta:</strong> {{ horario[2] | join(' ') }}<br>
+                    <strong>Quinta:</strong> {{ horario[3] | join(' ') }}<br>
+                    <strong>Sexta:</strong> {{ horario[4] | join(' ') }}<br>
+                    <strong>Sábado:</strong> {{ horario[5] | join(' ') }}<br>
+                </div>
+                <div class="email-info">
+                    <strong>Email:</strong> {{ email }}<br>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="button-container">
+            <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
+        </div>
+    </div>
+    <script>
+        function voltar() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

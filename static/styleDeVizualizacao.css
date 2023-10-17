@@ -1,0 +1,105 @@
+/* styleDeVizualizacao.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgba(158, 31, 34, 1);
+}
+
+.background-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1{
+    color: #fff;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1; /* Opacidade baixa para a imagem de fundo */
+}
+
+.horarios-container {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none; /* Removido o fundo branco */
+    padding: 20px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+#pesquisa {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#botao_pesquisa {
+    padding: 10px 20px;
+    background-color: rgba(158, 31, 34, 1);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#botao_pesquisa:hover {
+    background-color: #c6272d;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.horario-item {
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo com opacidade baixa */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.horario-info {
+    font-size: 18px;
+    text-align: left;
+    margin: 10px;
+}
+
+.email-info {
+    font-size: 16px;
+    text-align: left;
+    margin: 10px;
+}
+
+/* Estilos de hover (quando o mouse passa por cima) */
+.voltar-button:hover {
+    background-color: #999; /* Cor de fundo mais escura no hover do botão "Voltar" */
+}
+
+.voltar-button {
+    background-color: #ccc; /* Cor de fundo do botão "Voltar" */
+    color: #333; /* Cor do texto do botão "Voltar" */
+    padding: 10px 20px; /* Espaçamento interno do botão "Voltar" */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+

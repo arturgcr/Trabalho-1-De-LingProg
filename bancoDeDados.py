@@ -177,7 +177,7 @@ class BancoDeDados:
             print(f"Erro ao ler dados: {err}")
             return []
 
-    def atualizar_dados(self, tabela, novos_dados, condicao):
+    def atualizar_area(self, novos_dados, condicao):
         """
         Atualiza dados em uma tabela com base em uma condição.
 
@@ -187,13 +187,21 @@ class BancoDeDados:
             condicao (str): Uma condição que determina quais registros serão atualizados.
         """
         try:
-            cursor = self.conexao.cursor()
-            colunas = ', '.join([f"{coluna} = %s" for coluna in novos_dados.keys()])
-            valores = tuple(novos_dados.values())
-            consulta = f"UPDATE {tabela} SET {colunas} WHERE {condicao}"
-            cursor.execute(consulta, valores)
-            self.conexao.commit()
-            print("Dados atualizados com sucesso.")
+            self.inserir_area(novos_dados, condicao)
+        except mysql.connector.Error as err:
+            print(f"Erro ao atualizar dados: {err}")
+
+    def atualizar_projeto(self, novos_dados, condicao):
+        """
+        Atualiza dados em uma tabela com base em uma condição.
+
+        Parametros:
+            tabela (str): Nome da tabela onde os dados serão atualizados.
+            novos_dados (dict): Um dicionário contendo os novos valores a serem atualizados.
+            condicao (str): Uma condição que determina quais registros serão atualizados.
+        """
+        try:
+            self.inserir_projeto(novos_dados, condicao)
         except mysql.connector.Error as err:
             print(f"Erro ao atualizar dados: {err}")
 

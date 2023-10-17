@@ -10,6 +10,7 @@
     <div class="options-container">
         <h1>Escolha as opções:</h1>
 
+        <!-- Membros -->
         <label for="membros">Membros:</label>
         <select id="membros" name="membros" required>
             <option value="Opção1">Opção1</option>
@@ -17,6 +18,7 @@
             <option value="Opção3">Indiferente</option>
         </select>
 
+        <!-- Cargos -->
         <label for="cargos">Cargos:</label>
         <select id="cargos" name="cargos" required>
             <option value="Opção1">Trainne</option>
@@ -26,6 +28,7 @@
             <option value="Opção5">Indiferente</option>
         </select>
 
+        <!-- Áreas -->
         <label for="areas">Áreas:</label>
         <select id="areas" name="areas" required>
             <option value="Área1">Eletroprog</option>
@@ -36,6 +39,7 @@
             <option value="Área6">Indiferente</option>
         </select>
 
+        <!-- Projetos -->
         <label for="projetos">Projetos:</label>
         <select id="projetos" name="projetos" required>
             <option value="Projeto1">Combate Grande</option>
@@ -48,15 +52,35 @@
             <option value="Projeto8">Indiferente</option>
         </select>
 
-        <button type="button" onclick="voltar()">Voltar</button>
-        <button class="options-button" onclick="obterOpcoes()">Confirmar</button>
-    </div>
-    <script src="scripts.js"></script>
+        <!-- Duração -->
+        <label for="duracao">Duração da Reunião (em minutos):</label>
+        <input type="number" id="duracao" name="duracao" required>
 
+        <!-- Nome da Reunião -->
+        <label for="nome">Nome da Reunião:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <!-- Grau de Urgência -->
+        <label for="urgencia">Grau de Urgência:</label>
+        <div class="urgencia-container">
+            <input type="range" id="urgencia" name="urgencia" min="1" max="5" step="1" required value="1">
+            <span id="urgencia-value">1</span>
+        </div>
+
+        <div class="button-container">
+            <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
+            <button class="options-button" onclick="obterOpcoes()">Criar Reunião</button>
+        </div>    
+    </div>
     <script>
         function voltar() {
             window.history.back();
         }
+
+        // Atualiza o valor da urgência conforme o controle deslizante
+        document.getElementById("urgencia").addEventListener("input", function() {
+            document.getElementById("urgencia-value").textContent = this.value;
+        });
     </script>
 </body>
 </html>
