@@ -1,0 +1,90 @@
+/* stylesDoCriarReuniao.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(158, 31, 34, 1);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options-container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.urgencia-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#urgencia {
+    width: 80%;
+    margin: 0;
+}
+
+#urgencia-value {
+    width: 20%;
+    text-align: right;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centralize os botões */
+    margin-top: 20px; /* Aumente o espaçamento entre os campos e os botões */
+}
+
+.voltar-button, .options-button {
+    flex-basis: calc(50% - 10px); /* Tamanho um pouco maior e espaço entre eles */
+    padding: 15px; /* Tamanho maior dos botões */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+
+.voltar-button {
+    background-color: #ccc;
+    color: #333;
+}
+
+.options-button {
+    background-color: rgba(158, 31, 34, 1);
+    color: #fff;
+}
+
+.voltar-button:hover {
+    background-color: #999;
+}
+
+.options-button:hover {
+    background-color: #c6272d;
+}

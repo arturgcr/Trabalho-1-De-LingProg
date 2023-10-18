@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.login-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: rgba(158, 31, 34, 1);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95vh; /* Ocupa toda a altura vertical */
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar .input-group {
+    margin-bottom: 20px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+    color: rgba(158, 31, 34, 1);
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.botao-cadastrar {
+    background-color: rgba(158, 31, 34, 1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.botao-cadastrar:hover {
+    background-color: rgba(128, 25, 27, 1);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 20px;
+}
+
+/* Estiliza os links para corresponder à cor da barra lateral */
+a {
+    color: rgba(158, 31, 34, 1);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgba(158, 31, 34, 1); /* Cor do link ao passar o mouse */
+}

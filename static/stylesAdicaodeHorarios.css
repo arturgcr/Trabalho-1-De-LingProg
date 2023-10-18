@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: rgba(158, 31, 34, 1);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+
+/* Adicione este CSS ao seu arquivo de estilos para estilizar os botões */
+
+.button-container {
+    text-align: center;
+    margin-top: 20px; /* Espaçamento acima dos botões */
+}
+
+.voltar-button {
+    background-color: #ccc; /* Cor de fundo do botão "Voltar" */
+    color: #333; /* Cor do texto do botão "Voltar" */
+    padding: 10px 20px; /* Espaçamento interno do botão "Voltar" */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.continuar-button {
+    background-color: rgba(158, 31, 34, 1); /* Cor de fundo do botão "Continuar" */
+    color: #fff; /* Cor do texto do botão "Continuar" */
+    padding: 10px 20px; /* Espaçamento interno do botão "Continuar" */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos de hover (quando o mouse passa por cima) */
+.voltar-button:hover {
+    background-color: #999; /* Cor de fundo mais escura no hover do botão "Voltar" */
+}
+
+.continuar-button:hover {
+    background-color: #c6272d; /* Cor de fundo mais escura no hover do botão "Continuar" */
+}
+
+
+.signup-container2 {
+    padding: 20px;
+}
+
+table.horario-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.horario-table th.dia-header, table.horario-table td {
+    padding: 8px;
+    text-align: center;
+}
+
+table.horario-table th.dia-header {
+    background-color: rgba(158, 31, 34, 1);
+    color: white;
+}
+
+table.horario-table td {
+    background-color: #f2f2f2;
+}
+
+table.horario-table th:first-child, table.horario-table td:first-child {
+    background-color: white;
+}

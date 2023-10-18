@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylesAdicaodeHorarios.css">
+    <title>Adicionar meus Horários</title>
+</head>
+
+<body>
+    <header>
+        <h1>Adicionar meus Horários</h1>
+    </header>
+    <form action="/editarHorarios" method="POST">
+        <ul>
+            <button type="submit" name="alterar_estado" value="alterar_estado" class="estado-button">
+                {{ estado }}
+            </button>
+        </ul>
+    <div class="signup-container2">
+        <table class="horario-table" border="1">
+            <tr>
+                <th></th>
+                <th class="dia-header">Segunda</th>
+                <th class="dia-header">Terça</th>
+                <th class="dia-header">Quarta</th>
+                <th class="dia-header">Quinta</th>
+                <th class="dia-header">Sexta</th>
+                <th class="dia-header">Sábado</th>
+            </tr>
+
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>0</td> 
+                        <td><input type="checkbox" name= "horario" value="0A"></td>
+                        <td><input type="checkbox" name= "horario" value="0B""></td>
+                        <td><input type="checkbox" name= "horario" value="0C"></td>
+                        <td><input type="checkbox" name= "horario" value="0D"></td>
+                        <td><input type="checkbox" name= "horario" value="0E"></td>
+                        <td><input type="checkbox" name= "horario" value="0F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>1</td> 
+                        <td><input type="checkbox" name= "horario" value="1A"></td>
+                        <td><input type="checkbox" name= "horario" value="1B""></td>
+                        <td><input type="checkbox" name= "horario" value="1C"></td>
+                        <td><input type="checkbox" name= "horario" value="1D"></td>
+                        <td><input type="checkbox" name= "horario" value="1E"></td>
+                        <td><input type="checkbox" name= "horario" value="1F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>2</td> 
+                        <td><input type="checkbox" name= "horario" value="2A"></td>
+                        <td><input type="checkbox" name= "horario" value="2B""></td>
+                        <td><input type="checkbox" name= "horario" value="2C"></td>
+                        <td><input type="checkbox" name= "horario" value="2D"></td>
+                        <td><input type="checkbox" name= "horario" value="2E"></td>
+                        <td><input type="checkbox" name= "horario" value="2F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>3</td> 
+                        <td><input type="checkbox" name= "horario" value="3A"></td>
+                        <td><input type="checkbox" name= "horario" value="3B""></td>
+                        <td><input type="checkbox" name= "horario" value="3C"></td>
+                        <td><input type="checkbox" name= "horario" value="3D"></td>
+                        <td><input type="checkbox" name= "horario" value="3E"></td>
+                        <td><input type="checkbox" name= "horario" value="3F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>4</td> 
+                        <td><input type="checkbox" name= "horario" value="4A"></td>
+                        <td><input type="checkbox" name= "horario" value="4B""></td>
+                        <td><input type="checkbox" name= "horario" value="4C"></td>
+                        <td><input type="checkbox" name= "horario" value="4D"></td>
+                        <td><input type="checkbox" name= "horario" value="4E"></td>
+                        <td><input type="checkbox" name= "horario" value="4F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>5</td> 
+                        <td><input type="checkbox" name= "horario" value="5A"></td>
+                        <td><input type="checkbox" name= "horario" value="5B""></td>
+                        <td><input type="checkbox" name= "horario" value="5C"></td>
+                        <td><input type="checkbox" name= "horario" value="5D"></td>
+                        <td><input type="checkbox" name= "horario" value="5E"></td>
+                        <td><input type="checkbox" name= "horario" value="5F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>6</td> 
+                        <td><input type="checkbox" name= "horario" value="6A"></td>
+                        <td><input type="checkbox" name= "horario" value="6B""></td>
+                        <td><input type="checkbox" name= "horario" value="6C"></td>
+                        <td><input type="checkbox" name= "horario" value="6D"></td>
+                        <td><input type="checkbox" name= "horario" value="6E"></td>
+                        <td><input type="checkbox" name= "horario" value="6F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>7</td> 
+                        <td><input type="checkbox" name= "horario" value="7A"></td>
+                        <td><input type="checkbox" name= "horario" value="7B""></td>
+                        <td><input type="checkbox" name= "horario" value="7C"></td>
+                        <td><input type="checkbox" name= "horario" value="7D"></td>
+                        <td><input type="checkbox" name= "horario" value="7E"></td>
+                        <td><input type="checkbox" name= "horario" value="7F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>8</td> 
+                        <td><input type="checkbox" name= "horario" value="8A"></td>
+                        <td><input type="checkbox" name= "horario" value="8B""></td>
+                        <td><input type="checkbox" name= "horario" value="8C"></td>
+                        <td><input type="checkbox" name= "horario" value="8D"></td>
+                        <td><input type="checkbox" name= "horario" value="8E"></td>
+                        <td><input type="checkbox" name= "horario" value="8F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>9</td> 
+                        <td><input type="checkbox" name= "horario" value="9A"></td>
+                        <td><input type="checkbox" name= "horario" value="9B""></td>
+                        <td><input type="checkbox" name= "horario" value="9C"></td>
+                        <td><input type="checkbox" name= "horario" value="9D"></td>
+                        <td><input type="checkbox" name= "horario" value="9E"></td>
+                        <td><input type="checkbox" name= "horario" value="9F"></td>
+            
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>10</td> 
+                        <td><input type="checkbox" name= "horario" value="10A"></td>
+                        <td><input type="checkbox" name= "horario" value="10B""></td>
+                        <td><input type="checkbox" name= "horario" value="10C"></td>
+                        <td><input type="checkbox" name= "horario" value="10D"></td>
+                        <td><input type="checkbox" name= "horario" value="10E"></td>
+                        <td><input type="checkbox" name= "horario" value="10F"></td>
+                
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>11</td> 
+                        <td><input type="checkbox" name= "horario" value="11A"></td>
+                        <td><input type="checkbox" name= "horario" value="11B""></td>
+                        <td><input type="checkbox" name= "horario" value="11C"></td>
+                        <td><input type="checkbox" name= "horario" value="11D"></td>
+                        <td><input type="checkbox" name= "horario" value="11E"></td>
+                        <td><input type="checkbox" name= "horario" value="11F"></td>
+                
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>12</td> 
+                        <td><input type="checkbox" name= "horario" value="12A"></td>
+                        <td><input type="checkbox" name= "horario" value="12B""></td>
+                        <td><input type="checkbox" name= "horario" value="12C"></td>
+                        <td><input type="checkbox" name= "horario" value="12D"></td>
+                        <td><input type="checkbox" name= "horario" value="12E"></td>
+                        <td><input type="checkbox" name= "horario" value="12F"></td>
+                
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>13</td> 
+                        <td><input type="checkbox" name= "horario" value="13A"></td>
+                        <td><input type="checkbox" name= "horario" value="13B""></td>
+                        <td><input type="checkbox" name= "horario" value="13C"></td>
+                        <td><input type="checkbox" name= "horario" value="13D"></td>
+                        <td><input type="checkbox" name= "horario" value="13E"></td>
+                        <td><input type="checkbox" name= "horario" value="13F"></td>
+                
+                    </tr>   
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>14</td> 
+                        <td><input type="checkbox" name= "horario" value="14A"></td>
+                        <td><input type="checkbox" name= "horario" value="14B""></td>
+                        <td><input type="checkbox" name= "horario" value="14C"></td>
+                        <td><input type="checkbox" name= "horario" value="14D"></td>
+                        <td><input type="checkbox" name= "horario" value="14E"></td>
+                        <td><input type="checkbox" name= "horario" value="14F"></td>
+                
+                    </tr>
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>15</td> 
+                        <td><input type="checkbox" name= "horario" value="15A"></td>
+                        <td><input type="checkbox" name= "horario" value="15B""></td>
+                        <td><input type="checkbox" name= "horario" value="15C"></td>
+                        <td><input type="checkbox" name= "horario" value="15D"></td>
+                        <td><input type="checkbox" name= "horario" value="15E"></td>
+                        <td><input type="checkbox" name= "horario" value="15F"></td>
+                
+                    </tr>   
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>16</td> 
+                        <td><input type="checkbox" name= "horario" value="16A"></td>
+                        <td><input type="checkbox" name= "horario" value="16B""></td>
+                        <td><input type="checkbox" name= "horario" value="16C"></td>
+                        <td><input type="checkbox" name= "horario" value="16D"></td>
+                        <td><input type="checkbox" name= "horario" value="16E"></td>
+                        <td><input type="checkbox" name= "horario" value="16F"></td>
+                
+                    </tr> 
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>17</td> 
+                        <td><input type="checkbox" name= "horario" value="17A"></td>
+                        <td><input type="checkbox" name= "horario" value="17B""></td>
+                        <td><input type="checkbox" name= "horario" value="17C"></td>
+                        <td><input type="checkbox" name= "horario" value="17D"></td>
+                        <td><input type="checkbox" name= "horario" value="17E"></td>
+                        <td><input type="checkbox" name= "horario" value="17F"></td>
+                
+                    </tr> 
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>18</td> 
+                        <td><input type="checkbox" name= "horario" value="18A"></td>
+                        <td><input type="checkbox" name= "horario" value="18B""></td>
+                        <td><input type="checkbox" name= "horario" value="18C"></td>
+                        <td><input type="checkbox" name= "horario" value="18D"></td>
+                        <td><input type="checkbox" name= "horario" value="18E"></td>
+                        <td><input type="checkbox" name= "horario" value="18F"></td>
+                
+                    </tr> 
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>19</td> 
+                        <td><input type="checkbox" name= "horario" value="19A"></td>
+                        <td><input type="checkbox" name= "horario" value="19B""></td>
+                        <td><input type="checkbox" name= "horario" value="19C"></td>
+                        <td><input type="checkbox" name= "horario" value="19D"></td>
+                        <td><input type="checkbox" name= "horario" value="19E"></td>
+                        <td><input type="checkbox" name= "horario" value="19F"></td>
+                
+                    </tr> 
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>20</td> 
+                        <td><input type="checkbox" name= "horario" value="20A"></td>
+                        <td><input type="checkbox" name= "horario" value="20B""></td>
+                        <td><input type="checkbox" name= "horario" value="20C"></td>
+                        <td><input type="checkbox" name= "horario" value="20D"></td>
+                        <td><input type="checkbox" name= "horario" value="20E"></td>
+                        <td><input type="checkbox" name= "horario" value="20F"></td>
+                
+                    </tr> 
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>21</td> 
+                        <td><input type="checkbox" name= "horario" value="21A"></td>
+                        <td><input type="checkbox" name= "horario" value="21B""></td>
+                        <td><input type="checkbox" name= "horario" value="21C"></td>
+                        <td><input type="checkbox" name= "horario" value="21D"></td>
+                        <td><input type="checkbox" name= "horario" value="21E"></td>
+                        <td><input type="checkbox" name= "horario" value="21F"></td>
+                
+                    </tr> 
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>22</td> 
+                        <td><input type="checkbox" name= "horario" value="22A"></td>
+                        <td><input type="checkbox" name= "horario" value="22B""></td>
+                        <td><input type="checkbox" name= "horario" value="22C"></td>
+                        <td><input type="checkbox" name= "horario" value="22D"></td>
+                        <td><input type="checkbox" name= "horario" value="22E"></td>
+                        <td><input type="checkbox" name= "horario" value="22F"></td>
+                
+                    </tr> 
+                    <tr>  <!-- Defino linhas com os horários e checkbox -->
+                        <td>23</td> 
+                        <td><input type="checkbox" name= "horario" value="23A"></td>
+                        <td><input type="checkbox" name= "horario" value="23B""></td>
+                        <td><input type="checkbox" name= "horario" value="23C"></td>
+                        <td><input type="checkbox" name= "horario" value="23D"></td>
+                        <td><input type="checkbox" name= "horario" value="23E"></td>
+                        <td><input type="checkbox" name= "horario" value="23F"></td>
+                
+                    </tr> 
+                </div>
+            </div>
+        </div>
+        </table>
+        
+        <div class="button-container">
+    
+            <a class="voltar-button" href= "/Opcoes">Voltar</a>
+            <input type="submit" value="Confirmar" class="continuar-button">
+        </div>
+    </form>
+
+    <script>
+        function alterarEstado(estadoAtual) {
+            if (estadoAtual === "Online") {
+                estadoAtual = "Presencial";
+            } else {
+                estadoAtual = "Online";
+            }
+            document.querySelector("button[name=alterar_estado]").textContent = estadoAtual;
+        }
+    </script>
+</body>
+</html>

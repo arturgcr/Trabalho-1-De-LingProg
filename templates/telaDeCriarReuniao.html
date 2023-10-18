@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Reunião</title>
+    <link rel="stylesheet" href="/static/stylesDoCriarReuniao.css">
+</head>
+<body>
+    <div class="options-container">
+        <h1>Escolha as opções:</h1>
+
+        <!-- Membros -->
+        <label for="membros">Membros:</label>
+        <select id="membros" name="membros" required>
+            <option value="Opção1">Opção1</option>
+            <option value="Opção2">Opção2</option>
+            <option value="Opção3">Indiferente</option>
+        </select>
+
+        <!-- Cargos -->
+        <label for="cargos">Cargos:</label>
+        <select id="cargos" name="cargos" required>
+            <option value="Opção1">Trainne</option>
+            <option value="Opção2">Membro</option>
+            <option value="Opção3">Liderança</option>
+            <option value="Opção4">Gestão</option>
+            <option value="Opção5">Indiferente</option>
+        </select>
+
+        <!-- Áreas -->
+        <label for="areas">Áreas:</label>
+        <select id="areas" name="areas" required>
+            <option value="Área1">Eletroprog</option>
+            <option value="Área2">Mecânico</option>
+            <option value="Área3">Administração</option>
+            <option value="Área4">Marketing</option>
+            <option value="Área5">Gestão</option>
+            <option value="Área6">Indiferente</option>
+        </select>
+
+        <!-- Projetos -->
+        <label for="projetos">Projetos:</label>
+        <select id="projetos" name="projetos" required>
+            <option value="Projeto1">Combate Grande</option>
+            <option value="Projeto2">Combate Pequeno</option>
+            <option value="Projeto3">Seguidor de Linha</option>
+            <option value="Projeto4">Trekking</option>
+            <option value="Projeto5">Sumô Mini</option>
+            <option value="Projeto6">Sumô 3KG</option>
+            <option value="Projeto7">Sumô Lego</option>
+            <option value="Projeto8">Indiferente</option>
+        </select>
+
+        <!-- Duração -->
+        <label for="duracao">Duração da Reunião (em minutos):</label>
+        <input type="number" id="duracao" name="duracao" required>
+
+        <!-- Nome da Reunião -->
+        <label for="nome">Nome da Reunião:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <!-- Grau de Urgência -->
+        <label for="urgencia">Grau de Urgência:</label>
+        <div class="urgencia-container">
+            <input type="range" id="urgencia" name="urgencia" min="1" max="5" step="1" required value="1">
+            <span id="urgencia-value">1</span>
+        </div>
+
+        <div class="button-container">
+            <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
+            <button class="options-button" onclick="obterOpcoes()">Criar Reunião</button>
+        </div>    
+    </div>
+    <script>
+        function voltar() {
+            window.history.back();
+        }
+
+        // Atualiza o valor da urgência conforme o controle deslizante
+        document.getElementById("urgencia").addEventListener("input", function() {
+            document.getElementById("urgencia-value").textContent = this.value;
+        });
+    </script>
+</body>
+</html>

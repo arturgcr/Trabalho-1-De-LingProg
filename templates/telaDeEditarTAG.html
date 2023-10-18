@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styleEditarTags.css"> <!-- Use o mesmo arquivo CSS da tela de login -->
+</head>
+<body>
+    <form action="/editarTAG" method="POST">
+    <div class="login-container">
+            <div class="input-group">
+                <label>Áreas:</label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Administração"> Administração
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Eletroprog"> Eletroprog
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Mecânica"> Mecânica
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Gestão"> Gestão
+                    </label>
+                    <label>
+                        <input type="checkbox" name="areas" value="Marketing"> Marketing
+                    </label>
+            </div>
+            <div class="input-group">
+                <label>Projetos:</label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Combate Grande"> Combate Grande
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Combate Pequeno"> Combate Pequeno
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="LEGO"> LEGO
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Sumô Mini"> Sumô Mini
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Sumô 3Kg"> Sumô 3Kg
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Trekking"> Trekking
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Seguidor"> Seguidor
+                    </label>
+                    <label>
+                        <input type="checkbox" name="projetos" value="Indiferente"> Indiferente
+                    </label>
+
+                    <div class="button-container">
+                        <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
+                        <input type="submit" value="Confirmar" class="continuar-button">
+                    </div>
+
+                    <script>
+                        function voltar() {
+                            window.history.back();
+                        }
+                    </script>
+        </div>
+    </div>
+</form>
+</body>
+</html>
