@@ -1,6 +1,5 @@
 import mysql.connector
 from mysql.connector import Error
-import json
 
 class BancoDeDados:
     def __init__(self, host="localhost", usuario="admBots", senha="senha", banco_de_dados="minervabots"):
@@ -204,37 +203,6 @@ class BancoDeDados:
             self.inserir_projeto(novos_dados, condicao)
         except mysql.connector.Error as err:
             print(f"Erro ao atualizar dados: {err}")
-
-    def criar_colunas_tabela(self, tabela, colunas):
-        """
-        Cria colunas em uma tabela no banco de dados.
-
-        Parametros:
-            tabela (str): Nome da tabela onde as colunas serão criadas.
-            colunas (dict): Um dicionário que mapeia o nome da coluna para o tipo de dados.
-
-        Onde usamos:
-            colunas = {
-                'nome': 'VARCHAR(255)',
-                'email': 'VARCHAR(255)',
-                'senha': 'VARCHAR(255)',
-                'cargo': 'VARCHAR(255)',
-                'projeto': 'VARCHAR(255)',
-                'area': 'VARCHAR(255)'
-            }
-            banco_de_dados.criar_colunas_tabela('banco_de_usuarios', colunas)
-        """
-        try:
-            cursor = self.conexao.cursor()
-            for coluna, tipo in colunas.items():
-                consulta = f"ALTER TABLE {tabela} ADD COLUMN {coluna} {tipo}"
-                cursor.execute(consulta)
-            self.conexao.commit()
-            print("Colunas criadas com sucesso.")
-        except mysql.connector.Error as err:
-            print(f"Erro ao criar colunas: {err}")
-
-
 
     def excluir_dado(self, tabela, identificador, selecionado):
         """

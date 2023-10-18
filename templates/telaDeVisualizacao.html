@@ -12,30 +12,53 @@
     </div>
     <div class="horarios-container">
         <h1>Visualização de Horários</h1>
-        
-        <!-- Campo de Pesquisa -->
-        <form method="POST" action="/visualizar">
-            <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquisar por nome ou email">
-            <button type="submit" id="botao_pesquisa">Pesquisar</button>
-        </form>           
-        <!-- Lista de Horários -->
-        <ul>
-            {% for horario, email in horarios %}
-            <li class="horario-item">
-                <div class="horario-info">
-                    <strong>Segunda:</strong> {{ horario[0] | join(' ') }}<br>
-                    <strong>Terça:</strong> {{ horario[1] | join(' ') }}<br>
-                    <strong>Quarta:</strong> {{ horario[2] | join(' ') }}<br>
-                    <strong>Quinta:</strong> {{ horario[3] | join(' ') }}<br>
-                    <strong>Sexta:</strong> {{ horario[4] | join(' ') }}<br>
-                    <strong>Sábado:</strong> {{ horario[5] | join(' ') }}<br>
-                </div>
-                <div class="email-info">
-                    <strong>Email:</strong> {{ email }}<br>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
+        <!-- Listas de Horários Lado a Lado -->
+        <div class="lista-container">
+            <div class="lista" id="presencial-list">
+                <h2>Horários Presenciais</h2>
+                <ul class="horario-list">
+                    {% for horario, email in horarios_presenciais%}
+                    <li class="horario-item">
+                        <div class="horario-info">
+                        {% if horario %}
+                            <strong>Segunda:</strong> {{ horario[0] | join('h, ') }}<br>
+                            <strong>Terça:</strong> {{ horario[1] | join('h, ') }}<br>
+                            <strong>Quarta:</strong> {{ horario[2] | join('h, ') }}<br>
+                            <strong>Quinta:</strong> {{ horario[3] | join('h, ') }}<br>
+                            <strong>Sexta:</strong> {{ horario[4] | join('h, ') }}<br>
+                            <strong>Sábado:</strong> {{ horario[5] | join('h, ') }}<br>
+                        {% endif %}
+                        </div>
+                        <div class="email-info">
+                            <strong>Email:</strong> {{ email }}<br>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="lista" id="online-list">
+                <h2>Horários Online</h2>
+                <ul class="horario-list">
+                    {% for horario, email in horarios_online%}
+                    <li class="horario-item">
+                        <div class="horario-info">
+                            {% if horario %}
+                                <strong>Segunda:</strong> {{ horario[0] | join('h, ') }}<br>
+                                <strong>Terça:</strong> {{ horario[1] | join('h, ') }}<br>
+                                <strong>Quarta:</strong> {{ horario[2] | join('h, ') }}<br>
+                                <strong>Quinta:</strong> {{ horario[3] | join('h, ') }}<br>
+                                <strong>Sexta:</strong> {{ horario[4] | join('h, ') }}<br>
+                                <strong>Sábado:</strong> {{ horario[5] | join('h, ') }}<br>
+                            {% endif %}
+                        </div>
+                        <div class="email-info">
+                            <strong>Email:</strong> {{ email }}<br>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
         <div class="button-container">
             <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
         </div>

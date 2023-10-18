@@ -5,6 +5,7 @@ class VerificaErro(Exception):
         self.mensagens = mensagens
 
 def verificar_senha(senha, confirmaSenha):
+    """Verifica se a senha atende a determinados critérios."""
     mensagens = []
     if len(senha) < 8:
         mensagens.append("A senha deve conter pelo menos 8 caracteres.")
@@ -21,6 +22,7 @@ def verificar_senha(senha, confirmaSenha):
         raise VerificaErro(mensagens)
     
 def verificar_cadastro_usuario(nome, email):
+    """Verifica se o nome de usuário e o email atendem a determinados critérios."""
     mensagens = []
     # Verifique se o nome de usuário não contém caracteres especiais
     if any(c.isdigit() for c in nome):
@@ -29,7 +31,7 @@ def verificar_cadastro_usuario(nome, email):
         mensagens.append("O nome deve conter pelo menos um caractere maiúsculo.")
     # Verifique se o email contém ".com" e "@"
     if "@" not in email:
-        mensagens.append("Email invalido")
+        mensagens.append("Email inválido")
 
     bancoDeDadosPraVerificarErro = BancoDeDados()
     emailsCadastrados = bancoDeDadosPraVerificarErro.ler_dados(colunas="email")
@@ -51,6 +53,7 @@ def verificar_cadastro_usuario(nome, email):
         raise VerificaErro(mensagens)
     
 def verifica_preenchimento_dos_campos(area, projeto):
+    """Verifica se as áreas e projetos foram selecionados."""
     mensagens = []
     if area == []:
         mensagens.append("Selecione pelo menos uma área.")

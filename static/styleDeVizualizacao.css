@@ -1,10 +1,9 @@
-/* styleDeVizualizacao.css */
-
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: rgba(158, 31, 34, 1);
+    background-color: #f2f2f2;
+    overflow: hidden;
 }
 
 .background-container {
@@ -12,10 +11,6 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-}
-
-h1{
-    color: #fff;
 }
 
 .background-image {
@@ -34,42 +29,45 @@ h1{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: none; /* Removido o fundo branco */
     padding: 20px;
-}
-
-.search-container {
-    margin-bottom: 20px;
-}
-
-#pesquisa {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#botao_pesquisa {
-    padding: 10px 20px;
     background-color: rgba(158, 31, 34, 1);
-    color: #fff;
-    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.h1 {
+    color: #f2f2f2;
+}
+
+.lista-container {
+    display: flex;
+    justify-content: center;
+}
+
+.lista {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    max-height: 400px;
+    overflow-y: auto;
+    /* Removendo a rolagem horizontal */
 }
 
-#botao_pesquisa:hover {
-    background-color: #c6272d;
+.h2 {
+    color: #f2f2f2;
 }
 
-ul {
+.horario-list {
     list-style: none;
     padding: 0;
 }
 
 .horario-item {
-    background-color: rgba(255, 255, 255, 0.9); /* Fundo com opacidade baixa */
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
@@ -90,16 +88,15 @@ ul {
 
 /* Estilos de hover (quando o mouse passa por cima) */
 .voltar-button:hover {
-    background-color: #999; /* Cor de fundo mais escura no hover do botão "Voltar" */
+    background-color: #999;
 }
 
 .voltar-button {
-    background-color: #ccc; /* Cor de fundo do botão "Voltar" */
-    color: #333; /* Cor do texto do botão "Voltar" */
-    padding: 10px 20px; /* Espaçamento interno do botão "Voltar" */
+    background-color: #ccc;
+    color: #333;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-

@@ -275,16 +275,13 @@
         </table>
         
         <div class="button-container">
-            <button type="button" onclick="voltar()" class="voltar-button">Voltar</button>
+    
+            <a class="voltar-button" href= "/Opcoes">Voltar</a>
             <input type="submit" value="Confirmar" class="continuar-button">
         </div>
     </form>
 
     <script>
-        function voltar() {
-            window.history.back();
-        }
-
         function alterarEstado(estadoAtual) {
             if (estadoAtual === "Online") {
                 estadoAtual = "Presencial";
