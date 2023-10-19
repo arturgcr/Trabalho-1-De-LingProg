@@ -7,6 +7,88 @@
 ## Descrição do Projeto
 [Fluxograma do Codigo](https://miro.com/app/board/uXjVMkb6eoc=/?share_link_id=681028836505)
 
+## Instruções de Compilação
+Utilizamos  o mysql como nosso banco de dados, portanto para que o programa funcione de acordo, devemos iniciar e ter o mysql baixado. Para instalação utilizamos o seguinte [tutorial](https://www.youtube.com/watch?v=zpssr3u1EO8), recomendamos que o siga caso não consiga pelo [site oficial](https://dev.mysql.com/downloads/). Abaixo seguem os comandos utilizados par a criação do nosso banco (foram rodados no workbench, mas pode-se rodar cada um individualmente no seu prompt de comando)
+
+1- Caso não esteja pelo workbench ja logado no seu root, faça o seguinte passos:
+
+```sql
+mysql -u root -p
+```
+
+Isso chamará a sua senha e basta que você a insira, garantindo assim estar logado no seu root, a partir dai, so seguir os passos adiante.
+
+2 - Insira cada linha individualmente caso esteja no prompt de comando, para evitar erros. Caso esteja no workbench basta copiar, colar e rodar o código pela própria ferramenta. Primeiro criamos o banco de dados pelos comandos abaixo.
+
+```sql
+create database if not exists MinervaBots;
+
+use MinervaBots;
+
+create table if not exists usuario (
+    nome varchar(255),
+    email varchar(255),
+    senha varchar(255),
+    cargo varchar(255),
+    constraint PK_usuario primary key (email)
+);
+
+create table if not exists area (
+    nome_area varchar(255),
+    FK_area_usuario_email varchar(255),
+    constraint PK_area primary key (nome_area, FK_area_usuario_email),
+    constraint FK_area_usuario foreign key (FK_area_usuario_email) references usuario (email)
+);
+
+create table if not exists projeto (
+    nome_projeto varchar(255),
+    FK_projeto_usuario_email varchar(255),
+    constraint PK_projeto primary key (nome_projeto, FK_projeto_usuario_email),
+    constraint FK_projeto_usuario foreign key (FK_projeto_usuario_email) references usuario (email)
+);
+
+create table horarios_online (
+    segunda varchar(80),
+    terca varchar(80),
+    quarta varchar(80),
+    quinta varchar(80),
+    sexta varchar(80),
+    sabado varchar(80),
+    FK_horarios_online_email varchar(255),
+    constraint PK_horarios_online primary key (segunda, terca, quarta, quinta, sexta, sabado, FK_horarios_online_email),
+    constraint FK_horarios_online foreign key (FK_horarios_online_email) references usuario (email)
+);
+
+create table horarios_presencial (
+    segunda varchar(80),
+    terca varchar(80),
+    quarta varchar(80),
+    quinta varchar(80),
+    sexta varchar(80),
+    sabado varchar(80),
+    FK_horarios_presencial_email varchar(255),
+    constraint PK_horarios_presencial primary key (segunda, terca, quinta, sexta, sabado, FK_horarios_presencial_email),
+    constraint FK_horarios_presencial foreign key (FK_horarios_presencial_email) references usuario (email)
+);
+
+```
+
+3 - Agora basta você criar o usuario usado no nosso código seguindo os comandos a baixo.
+
+```sql
+CREATE USER 'admBots'@'localhost' IDENTIFIED BY 'senha'; 
+GRANT ALL PRIVILEGES ON * . * TO 'admBots'@'localhost'; 
+FLUSH PRIVILEGES;
+``` 
+
+4 - As bibliotecas utilizadas e como baixá-las pelo seu prompt estão abaixo:
+```
+pip install mysql
+pip install webbrowser
+pip install threading
+pip install flask
+```
+
 ## Padrão de Commit
 Utilizamos tipos de commit para padronizar as mensagens de commit neste projeto. A seguir, estão os tipos de commit a serem utilizados, juntamente com exemplos de sumários correspondentes:
 
